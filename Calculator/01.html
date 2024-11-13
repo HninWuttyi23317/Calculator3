@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    First Number
+    <input type="text" id="firstNumber">  <br><br>
+
+    Second Number
+    <input type="text" id="secondNumber">  <br><br>
+
+    Operators
+    <select id="operators">
+        <option value="plus">+</option>
+        <option value="minus">-</option>
+        <option value="multi">*</option>
+        <option value="division">/</option>
+    </select> 
+    <br><br>
+
+    <button id="cal_btn">Calculate</button>
+
+    <h1 id="result"></h1>
+    
+</body>
+<script>
+
+    let num1 = document.getElementById('firstNumber')
+    let num2 = document.getElementById('secondNumber')
+    let operators = document.getElementById('operators')
+    let cal_btn = document.getElementById('cal_btn')
+    let result = document.getElementById('result')
+
+    cal_btn.addEventListener('click',function(){
+
+        if( num1.value != "" && num2.value != "" ){
+            let numberOne =   num1.value * 1
+            let numberTwo = num2.value * 1
+            let userOperator = operators.value
+
+            let answer = 0;
+
+            switch(userOperator){
+                case 'plus' : answer = numberOne + numberTwo ; break;
+                case 'minus' : answer = numberOne - numberTwo ; break;
+                case 'multi' : answer = numberOne * numberTwo ; break;
+                case 'division' : answer = numberOne / numberTwo ; break;
+                default : result = "error calculation...";
+            }
+
+            result.innerHTML = answer
+
+            num1.value = ""
+            num2.value = ""
+        }else{
+            result.innerHTML = "<span style='color:red'>You need to fill 2 text fields ! </span>"
+        }
+        
+        
+        
+    })
+  
+</script>
+</html>
